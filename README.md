@@ -34,7 +34,7 @@ Plaintext
 Bu repository'yi bilgisayarınıza clone'layın:
 
 Bash
-git clone https://github.com/kullanici-adin/muhtasar-beyanname.git
+git clone [https://github.com/ybguclu/muhtasar-beyanname.git
 Visual Studio 2022 veya güncel bir .NET IDE'si ile .sln dosyasını açın.
 
 Gerekli NuGet paketlerini (SQLite-net, MaterialDesignThemes vb.) geri yükleyin.
