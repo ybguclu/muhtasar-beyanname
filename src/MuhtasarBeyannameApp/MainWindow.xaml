@@ -1,0 +1,91 @@
+<Window x:Class="MuhtasarBeyannameApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Muhtasar Beyanname Düzenleyici" Height="700" Width="1050">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Mükellef Bilgileri" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Margin="6">
+                    <TextBlock Text="VKN/TCKN"/>
+                    <TextBox Text="{Binding VknTckn, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Margin="6" Grid.Column="1">
+                    <TextBlock Text="Ünvan"/>
+                    <TextBox Text="{Binding Unvan, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Margin="6" Grid.Column="2">
+                    <TextBlock Text="Yıl"/>
+                    <TextBox Text="{Binding DonemYil, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Margin="6" Grid.Column="3">
+                    <TextBlock Text="Ay"/>
+                    <TextBox Text="{Binding DonemAy, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Header="Satır Ekle" Padding="10" Margin="0,12,0,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="140"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Margin="6">
+                    <TextBlock Text="Ödeme Türü"/>
+                    <TextBox Text="{Binding OdemeTuru, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Margin="6" Grid.Column="1">
+                    <TextBlock Text="Brüt Tutar"/>
+                    <TextBox Text="{Binding BrutTutar, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Margin="6" Grid.Column="2">
+                    <TextBlock Text="Stopaj Oranı (%)"/>
+                    <TextBox Text="{Binding StopajOrani, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <Button Grid.Column="3" Margin="6" Content="Satır Ekle" Command="{Binding SatirEkleKomutu}"/>
+            </Grid>
+        </GroupBox>
+
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Satirlar}" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,0,12">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="#" Binding="{Binding SiraNo}" Width="50"/>
+                <DataGridTextColumn Header="Ödeme Türü" Binding="{Binding OdemeTuru}" Width="2*"/>
+                <DataGridTextColumn Header="Brüt" Binding="{Binding BrutTutar, StringFormat=N2}" Width="*"/>
+                <DataGridTextColumn Header="Stopaj %" Binding="{Binding StopajOrani, StringFormat=N2}" Width="*"/>
+                <DataGridTextColumn Header="Stopaj Tutarı" Binding="{Binding StopajTutari, StringFormat=N2}" Width="*"/>
+                <DataGridTextColumn Header="Damga Vergisi" Binding="{Binding DamgaVergisiTutari, StringFormat=N2}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DockPanel Grid.Row="3" LastChildFill="False">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                <TextBlock Text="Toplam Matrah: " FontWeight="Bold"/>
+                <TextBlock Text="{Binding ToplamMatrah, StringFormat=N2}" Margin="0,0,16,0"/>
+                <TextBlock Text="Toplam Stopaj: " FontWeight="Bold"/>
+                <TextBlock Text="{Binding ToplamStopaj, StringFormat=N2}" Margin="0,0,16,0"/>
+                <TextBlock Text="Toplam Damga: " FontWeight="Bold"/>
+                <TextBlock Text="{Binding ToplamDamgaVergisi, StringFormat=N2}"/>
+            </StackPanel>
+            <Button Content="XML Olarak Kaydet" Width="180" Height="36" Margin="16,0,0,0"
+                    Command="{Binding XmlKaydetKomutu}" DockPanel.Dock="Right"/>
+        </DockPanel>
+    </Grid>
+</Window>
