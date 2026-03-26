@@ -1,0 +1,192 @@
+<Window x:Class="MuhtasarBeyannameWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Muhtasar ve Prim Hizmet Beyannamesi" Height="760" Width="980" WindowStartupLocation="CenterScreen" Background="#B8C7DA">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="0" Background="#D3DFED" BorderBrush="#6A84A7" BorderThickness="1">
+            <TabItem Header="Genel Bilgiler"/>
+            <TabItem Header="Vergiye Tabi İşlemler"/>
+            <TabItem Header="Ödemeler"/>
+            <TabItem Header="Vergi Bildirimi"/>
+            <TabItem Header="SGK Bildirimleri"/>
+            <TabItem Header="Düzenleme Bilgileri"/>
+            <TabItem Header="Ekler"/>
+        </TabControl>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,6,0,0">
+            <StackPanel>
+                <Border Background="#C7D4E6" BorderBrush="#6A84A7" BorderThickness="1" Padding="12" Margin="0,0,0,8">
+                    <StackPanel>
+                        <DockPanel HorizontalAlignment="Center">
+                            <TextBlock Text="MUHTASAR VE PRİM HİZMET BEYANNAMESİ" FontSize="41" FontWeight="SemiBold" Foreground="#0D2D59"/>
+                            <TextBlock Text="1003A" FontSize="46" FontWeight="Bold" Foreground="#0D2D59" Margin="16,0,0,0"/>
+                        </DockPanel>
+                        <TextBlock Text="(GVK'nın 94 üncü Maddesi, KVK'nın 15 inci ve 30 uncu Maddeleri ve Damga Vergisi Kanununun 19uncu ve 23 üncü" TextAlignment="Center" FontSize="13" Margin="0,4,0,0"/>
+                        <TextBlock Text="Maddelerine Göre Yapılan Tevkifatlar ile 5510 Sayılı Kanının 4/1-a Maddesi Kapsamındaki Prim Ve Hizmet Bildirimi İçin)" TextAlignment="Center" FontSize="13"/>
+                    </StackPanel>
+                </Border>
+
+                <GroupBox Header="İDARİ BİLGİLER" Background="#C7D4E6" BorderBrush="#6A84A7" BorderThickness="1" Margin="0,0,0,8">
+                    <Grid Margin="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32"/>
+                            <RowDefinition Height="32"/>
+                            <RowDefinition Height="32"/>
+                            <RowDefinition Height="32"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Vergi Dairesi" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Column="1" x:Name="VergiDairesiComboBox" VerticalContentAlignment="Center"/>
+
+                        <TextBlock Grid.Row="1" Text="Dönem Tipi" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="DonemTipiComboBox" VerticalContentAlignment="Center"/>
+
+                        <TextBlock Grid.Row="2" Text="Ay" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="AyComboBox" VerticalContentAlignment="Center"/>
+
+                        <TextBlock Grid.Row="3" Text="Yıl" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" x:Name="YilTextBox"/>
+                    </Grid>
+                </GroupBox>
+
+                <Border Background="#C7D4E6" BorderBrush="#6A84A7" BorderThickness="1" Padding="8" Margin="0,0,0,8">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Şube No" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="SubeNoTextBox" Margin="0,0,8,0"/>
+                        <TextBlock Grid.Column="2" Text="Merkez için 0 yazınız" VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+
+                <GroupBox Header="VERGİ SORUMLUSUNUN" Background="#C7D4E6" BorderBrush="#6A84A7" BorderThickness="1" Margin="0,0,0,8">
+                    <Grid Margin="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="26"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Vergi Kimlik Numarası" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="VergiNoTextBox"/>
+                        <Button Grid.Column="2" Content="..." Margin="4,0,0,0"/>
+
+                        <TextBlock Grid.Row="1" Text="T.C. Kimlik No" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TcKimlikTextBox"/>
+
+                        <TextBlock Grid.Row="2" Text="Soyadı (Ünvanı)" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="SoyadiUnvaniTextBox"/>
+
+                        <TextBlock Grid.Row="3" Text="Adı (Ünvanın Devamı)" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="AdiUnvanTextBox"/>
+
+                        <TextBlock Grid.Row="4" Text="Ticaret Sicil No" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TicaretSicilTextBox"/>
+
+                        <TextBlock Grid.Row="5" Text="E-Posta Adresi" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" x:Name="EpostaTextBox"/>
+
+                        <TextBlock Grid.Row="6" Text="İrtibat Telefon No" VerticalAlignment="Center"/>
+                        <Grid Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" x:Name="TelefonAlanKodTextBox"/>
+                            <TextBox Grid.Column="2" x:Name="TelefonNoTextBox"/>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+
+                <Border Background="#C7D4E6" BorderBrush="#6A84A7" BorderThickness="1" Padding="8" Margin="0,0,0,8">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="230"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Bundan Sonraki Ay/Aylarda Beyanım Var/Yok" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Column="1" x:Name="BeyanDurumComboBox" VerticalContentAlignment="Center"/>
+                    </Grid>
+                </Border>
+
+                <GroupBox Header="Dosya İşlemleri" Background="#C7D4E6" BorderBrush="#6A84A7" BorderThickness="1" Margin="0,0,0,8">
+                    <Grid Margin="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="90"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32"/>
+                            <RowDefinition Height="32"/>
+                            <RowDefinition Height="32"/>
+                            <RowDefinition Height="32"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Beyannameden Kopyala" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="KopyalaTextBox"/>
+                        <Button Grid.Column="2" Content="..." Margin="4,0"/>
+                        <Button Grid.Column="3" Content="Kopyala" Click="Kopyala_OnClick"/>
+
+                        <TextBlock Grid.Row="1" Text="Oluşacak XML Dosya Dizini" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="XmlYolTextBox"/>
+                        <Button Grid.Row="1" Grid.Column="2" Content="..." Margin="4,0"/>
+                        <Button Grid.Row="1" Grid.Column="3" Content="Oluştur" Click="XmlOlustur_OnClick"/>
+
+                        <TextBlock Grid.Row="2" Text="Yüklenecek XML Dosyası" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" x:Name="YuklenecekXmlTextBox"/>
+                        <Button Grid.Row="2" Grid.Column="2" Content="..." Margin="4,0"/>
+                        <Button Grid.Row="2" Grid.Column="3" Content="Yükle"/>
+
+                        <TextBlock Grid.Row="3" Text="Beyanname Durumu" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" x:Name="BeyannameDurumComboBox"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="Hızlı Stopaj Kalemleri" Background="#C7D4E6" BorderBrush="#6A84A7" BorderThickness="1">
+                    <DockPanel Margin="8">
+                        <DataGrid x:Name="KalemlerGrid" DockPanel.Dock="Top" AutoGenerateColumns="False" CanUserAddRows="False" CellEditEnding="KalemlerGrid_CellEditEnding" Height="170">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Açıklama" Width="2*" Binding="{Binding Aciklama, UpdateSourceTrigger=PropertyChanged}"/>
+                                <DataGridTextColumn Header="Brüt Tutar" Width="*" Binding="{Binding BrutTutar, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"/>
+                                <DataGridTextColumn Header="Stopaj Oranı (%)" Width="*" Binding="{Binding StopajOrani, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"/>
+                                <DataGridTextColumn Header="Stopaj Tutarı" Width="*" Binding="{Binding StopajTutari, StringFormat=N2}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Net Ödenecek" Width="*" Binding="{Binding NetOdenecek, StringFormat=N2}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Width="120" Height="28" Margin="0,0,8,0" Content="Kalem Ekle" Click="SatirEkle_OnClick"/>
+                            <TextBlock x:Name="ToplamBrutText" FontWeight="Bold" Margin="0,5,20,0"/>
+                            <TextBlock x:Name="ToplamStopajText" FontWeight="Bold" Margin="0,5,20,0"/>
+                            <TextBlock x:Name="ToplamNetText" FontWeight="Bold" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </DockPanel>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
