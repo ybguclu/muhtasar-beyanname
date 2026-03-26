@@ -1,45 +1,41 @@
-Muhtasar Beyanname Düzenleyici (MBD) 📑
-Türkiye vergi mevzuatına uygun, Gelir İdaresi Başkanlığı (GİB) e-Beyanname sistemleri ile tam uyumlu XML çıktısı üreten, kullanıcı dostu bir masaüstü uygulamasıdır.
+# Muhtasar Beyanname Düzenleyici (WPF)
 
-🚀 Projenin Amacı
-Bu uygulama; işletmelerin, mali müşavirlerin veya vergi sorumlularının, tevkifata (stopaj) tabi ödemelerini (personel maaşı, kira, serbest meslek makbuzu vb.) dijital ortamda düzenleyip GİB sistemine yüklemeye hazır hale getirmesini sağlamak amacıyla geliştirilmektedir.
+Bu proje, **C# + WPF** ile hazırlanmış örnek bir "Muhtasar Beyanname" masaüstü uygulamasıdır.
+Kullanıcıdan mükellef bilgilerini ve stopaj kalemlerini alır, toplamları otomatik hesaplar ve veriyi XML çıktısı olarak kaydeder.
 
-✨ Temel Özellikler
-GİB / BDP Uyumluluğu: Oluşturulan XML dosyaları Beyanname Düzenleme Programı ile %100 uyumludur.
+## Özellikler
 
-Akıllı Hesaplama Motoru: Güncel gelir vergisi dilimleri ve damga vergisi oranlarını kullanarak otomatik stopaj hesaplama.
+- Mükellef ünvanı ve vergi numarası girişi
+- Dinamik stopaj kalemi tablosu (Açıklama / Brüt / Oran)
+- Otomatik hesaplanan alanlar:
+  - Stopaj tutarı
+  - Net ödenecek tutar
+- Toplam brüt / stopaj / net özet alanı
+- XML dosyası dışa aktarma
 
-SQLite Veri Yönetimi: Tüm beyanname ve mükellef geçmişini yerel bir veritabanında güvenle saklama.
+## Proje Yapısı
 
-Excel Entegrasyonu: Personel listesi veya kira ödemelerini Excel üzerinden toplu olarak içe aktarma.
+- `src/MuhtasarBeyannameWpf/MuhtasarBeyannameWpf.csproj`: WPF proje dosyası
+- `src/MuhtasarBeyannameWpf/MainWindow.xaml`: Ana ekran tasarımı
+- `src/MuhtasarBeyannameWpf/MainWindow.xaml.cs`: Uygulama iş mantığı
+- `src/MuhtasarBeyannameWpf/Models/StopajKalemi.cs`: Stopaj kalemi modeli
+- `src/MuhtasarBeyannameWpf/Services/XmlBeyannameYazici.cs`: XML dışa aktarma servisi
 
-Modern Arayüz: Hızlı veri girişi için optimize edilmiş kullanıcı deneyimi.
+## Çalıştırma
 
-🛠️ Kullanılan Teknolojiler
-Dil: C# / .NET 9.0
+1. .NET SDK (Windows üzerinde) kurulu olmalıdır.
+2. Proje klasörüne gidin:
 
-Arayüz: WPF (Windows Presentation Foundation)
+```bash
+cd src/MuhtasarBeyannameWpf
+```
 
-Veritabanı: SQLite
+3. Uygulamayı başlatın:
 
-XML İşleme: System.Xml.Serialization
+```bash
+dotnet run
+```
 
-📂 Proje Yapısı
-Plaintext
-/src                # Kaynak kodlar
-/docs               # GİB XML şemaları ve mevzuat dökümanları
-/assets             # Uygulama ikonları ve görseller
-/tests              # Hesaplama motoru için birim testler
-⚙️ Kurulum ve Çalıştırma
-Bu repository'yi bilgisayarınıza clone'layın:
+## Not
 
-Bash
-git clone [https://github.com/ybguclu/muhtasar-beyanname.git
-Visual Studio 2022 veya güncel bir .NET IDE'si ile .sln dosyasını açın.
-
-Gerekli NuGet paketlerini (SQLite-net, MaterialDesignThemes vb.) geri yükleyin.
-
-Projeyi derleyin ve çalıştırın.
-
-📜 Lisans
-Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına göz atabilirsiniz.
+Bu uygulama bir başlangıç örneğidir; gerçek GİB/BDP şema uyumluluğu için resmi XML şema doğrulaması, mevzuat oranları ve detaylı alan eşlemeleri eklenmelidir.

@@ -1,0 +1,55 @@
+<Window x:Class="MuhtasarBeyannameWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Muhtasar Beyanname Düzenleyici" Height="560" Width="980" WindowStartupLocation="CenterScreen">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Muhtasar Beyanname Giriş Ekranı" FontSize="24" FontWeight="SemiBold"/>
+
+        <Grid Grid.Row="1" Margin="0,14,0,14">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="0,0,14,0">
+                <TextBlock Text="Mükellef Ünvanı" Margin="0,0,0,6"/>
+                <TextBox x:Name="MukellefUnvaniTextBox" Height="30"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="0,0,14,0">
+                <TextBlock Text="Vergi Numarası" Margin="0,0,0,6"/>
+                <TextBox x:Name="VergiNoTextBox" Height="30" MaxLength="10"/>
+            </StackPanel>
+
+            <Button Grid.Column="2" Width="120" Margin="0,20,10,0" Height="30" Content="Satır Ekle" Click="SatirEkle_OnClick"/>
+            <Button Grid.Column="3" Width="130" Margin="0,20,0,0" Height="30" Content="XML Oluştur" Click="XmlOlustur_OnClick"/>
+        </Grid>
+
+        <DataGrid Grid.Row="2" x:Name="KalemlerGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="False" CellEditEnding="KalemlerGrid_CellEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Açıklama" Width="2*" Binding="{Binding Aciklama, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Brüt Tutar" Width="*" Binding="{Binding BrutTutar, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"/>
+                <DataGridTextColumn Header="Stopaj Oranı (%)" Width="*" Binding="{Binding StopajOrani, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"/>
+                <DataGridTextColumn Header="Stopaj Tutarı" Width="*" Binding="{Binding StopajTutari, StringFormat=N2}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Net Ödenecek" Width="*" Binding="{Binding NetOdenecek, StringFormat=N2}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Row="3" Margin="0,14,0,0" BorderThickness="1" BorderBrush="#DDDDDD" Padding="12">
+            <DockPanel>
+                <TextBlock x:Name="ToplamBrutText" FontWeight="Bold" Margin="0,0,20,0"/>
+                <TextBlock x:Name="ToplamStopajText" FontWeight="Bold" Margin="0,0,20,0"/>
+                <TextBlock x:Name="ToplamNetText" FontWeight="Bold" FontSize="14"/>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>
